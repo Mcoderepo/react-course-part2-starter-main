@@ -11,12 +11,12 @@ const TodoForm = () => {
         .post<Todo>("https://jsonplaceholder.typicode.com/todos", todo)
         .then((res) => res.data),
     onSuccess: (savedTodo, newTodo) => {
-      // APPROACH 1: Invalidating the cache  with real backend server
+      // APPROACH 1: Invalidating the cache and automatically trigger a refresh of cache
       /* queryClient.invalidateQueries({
         queryKey: ["todos"],
       }); */
-      // APPROACH 2: Updating the data in the cache
-      queryClient.setQueriesData<Todo[]>(["todos"], (todos) => [
+      // APPROACH 2: Updating the data in the cache manually
+      queryClient.setQueryData<Todo[]>(["todos"], (todos) => [
         savedTodo,
         ...(todos || []),
       ]);
