@@ -2,7 +2,7 @@ import { useContext, useReducer } from "react";
 import TasksContext from "./context/tasksContext";
 
 const TaskList = () => {
-  const { tasks, dispatch } = useContext(TasksContext);
+  const { tasks, tasksDispatch: dispatch } = useContext(TasksContext);
 
   return (
     <>
